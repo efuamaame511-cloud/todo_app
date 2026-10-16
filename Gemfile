@@ -21,7 +21,7 @@ gem "jbuilder"
 gem "bcrypt", "~> 3.1.7"
 
 # Country select dropdown
-gem "country_select", "~> 6.1"
+gem "country_select", "~> 11.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
