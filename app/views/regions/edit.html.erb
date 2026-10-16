@@ -1,0 +1,27 @@
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "modal" do %>
+    <div class="form-page">
+      <div class="form-page-header"><%= link_to regions_path, class: "back-button", aria: { label: "Back to Regions" } do %>←<% end %><div><h1>Edit Region</h1><p>Update this region in the system</p></div></div>
+      <div class="form-card">
+        <%= render "shared/form_errors", record: @region %>
+        <%= form_with url: region_path(@region.id), method: :patch, local: true do %>
+          <div class="form-field"><%= label_tag "region[code]", "Code", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= text_field_tag "region[code]", @region.code, class: "form-control", placeholder: "Enter code", required: true %></div></div>
+          <div class="form-field"><%= label_tag "region[region]", "Region", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= text_field_tag "region[region]", @region.region, class: "form-control", placeholder: "Enter region", required: true %></div></div>
+          <div class="form-actions"><%= link_to "Cancel", regions_path, class: "secondary-button" %><%= submit_tag "Update Region", class: "primary-button" %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="form-page">
+    <div class="form-page-header"><%= link_to regions_path, class: "back-button", aria: { label: "Back to Regions" } do %>←<% end %><div><h1>Edit Region</h1><p>Update this region in the system</p></div></div>
+    <div class="form-card">
+      <%= render "shared/form_errors", record: @region %>
+      <%= form_with url: region_path(@region.id), method: :patch, local: true do %>
+        <div class="form-field"><%= label_tag "region[code]", "Code", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= text_field_tag "region[code]", @region.code, class: "form-control", placeholder: "Enter code", required: true %></div></div>
+        <div class="form-field"><%= label_tag "region[region]", "Region", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= text_field_tag "region[region]", @region.region, class: "form-control", placeholder: "Enter region", required: true %></div></div>
+        <div class="form-actions"><%= link_to "Cancel", regions_path, class: "secondary-button" %><%= submit_tag "Update Region", class: "primary-button" %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

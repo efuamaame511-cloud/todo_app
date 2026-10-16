@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-custom" data-bs-theme="light">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="<%= asset_path('logo_white_blue (1).png') %>" alt="Logo" width="50" height="44" class="d-inline-block align-text-top" style="margin-left:30px">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
+      <ul class="navbar-nav nav-pills">
+        <li class="nav-item">
+          <%= link_to "Bio Data", tasks_path, class: "nav-link #{'active' if current_page?(tasks_path)}" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Location", addresses_path, class: "nav-link #{'active' if current_page?(addresses_path)}" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Regions", regions_path, class: "nav-link #{'active' if current_page?(regions_path)}" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Cities", cities_path, class: "nav-link #{'active' if current_page?(cities_path)}" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+

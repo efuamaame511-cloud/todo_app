@@ -1,0 +1,35 @@
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "modal" do %>
+    <div class="detail-page">
+      <div class="detail-header"><div class="detail-heading"><span class="detail-icon">▤</span><div><h1>Task Details</h1><p>Dashboard &nbsp;›&nbsp; Tasks &nbsp;›&nbsp; Task Details</p></div></div><%= link_to "←  Back to Tasks", tasks_path, class: "outline-button" %></div>
+      <div class="detail-card">
+        <div class="detail-row"><span class="detail-row-icon">▤</span><strong>Title</strong><span><%= @task.title %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">♙</span><strong>First Name</strong><span><%= @task.first_name %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">♙</span><strong>Last Name</strong><span><%= @task.last_name %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">▣</span><strong>Age</strong><span class="value-chip"><%= @task.age %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">⌕</span><strong>Contact</strong><span><%= @task.contact %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">@</span><strong>Email</strong><span><%= @task.email %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">⌖</span><strong>City Name</strong><span class="value-chip orange"><%= @task.city_name %></span></div>
+      </div>
+      <div class="record-footer">
+        <span>Record ID: #TASK-<%= @task.id || "N/A" %></span>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-heading"><span class="detail-icon">▤</span><div><h1>Task Details</h1><p>Dashboard &nbsp;›&nbsp; Tasks &nbsp;›&nbsp; Task Details</p></div></div><%= link_to "←  Back to Tasks", tasks_path, class: "outline-button" %></div>
+    <div class="detail-card">
+      <div class="detail-row"><span class="detail-row-icon">▤</span><strong>Title</strong><span><%= @task.title %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">♙</span><strong>First Name</strong><span><%= @task.first_name %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">♙</span><strong>Last Name</strong><span><%= @task.last_name %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">▣</span><strong>Age</strong><span class="value-chip"><%= @task.age %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">⌕</span><strong>Contact</strong><span><%= @task.contact %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">@</span><strong>Email</strong><span><%= @task.email %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">⌖</span><strong>City Name</strong><span class="value-chip orange"><%= @task.city_name %></span></div>
+    </div>
+    <div class="record-footer">
+      <span>Record ID: #TASK-<%= @task.id || "N/A" %></span>
+    </div>
+  </div>
+<% end %>

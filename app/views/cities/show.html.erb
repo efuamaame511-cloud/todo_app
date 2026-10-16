@@ -1,0 +1,29 @@
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "modal" do %>
+    <div class="detail-page">
+      <div class="detail-header"><div class="detail-heading"><span class="detail-icon">▤</span><div><h1>City Details</h1><p>Dashboard &nbsp;›&nbsp; Cities &nbsp;›&nbsp; City Details</p></div></div><%= link_to "←  Back to Cities", cities_path, class: "outline-button" %></div>
+      <div class="detail-card">
+        <div class="detail-row"><span class="detail-row-icon">▤</span><strong>ID</strong><span><%= @city.id %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">⌖</span><strong>Region Code</strong><span><%= @city.region_code %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">T</span><strong>City Name</strong><span><%= @city.city_name %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">T</span><strong>City Code</strong><span><%= @city.city_code %></span></div>
+      </div>
+      <div class="record-footer">
+        <span>Record ID: #CITY-<%= @city.id || "N/A" %></span>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-heading"><span class="detail-icon">▤</span><div><h1>City Details</h1><p>Dashboard &nbsp;›&nbsp; Cities &nbsp;›&nbsp; City Details</p></div></div><%= link_to "←  Back to Cities", cities_path, class: "outline-button" %></div>
+    <div class="detail-card">
+      <div class="detail-row"><span class="detail-row-icon">▤</span><strong>ID</strong><span><%= @city.id %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">⌖</span><strong>Region Code</strong><span><%= @city.region_code %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">T</span><strong>City Name</strong><span><%= @city.city_name %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">T</span><strong>City Code</strong><span><%= @city.city_code %></span></div>
+    </div>
+    <div class="record-footer">
+      <span>Record ID: #CITY-<%= @city.id || "N/A" %></span>
+    </div>
+  </div>
+<% end %>

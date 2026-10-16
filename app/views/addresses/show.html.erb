@@ -1,0 +1,31 @@
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "modal" do %>
+    <div class="detail-page">
+      <div class="detail-header"><div class="detail-heading"><span class="detail-icon">⌂</span><div><h1>Address Details</h1><p>Dashboard &nbsp;›&nbsp; Addresses &nbsp;›&nbsp; Address Details</p></div></div><%= link_to "←  Back to Addresses", addresses_path, class: "outline-button" %></div>
+      <div class="detail-card">
+        <div class="detail-row"><span class="detail-row-icon">♙</span><strong>Name</strong><span><%= @address.name %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">⌂</span><strong>Home Address</strong><span><%= @address.home_address %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">⌂</span><strong>Work Address</strong><span><%= @address.work_address %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">⌂</span><strong>Street Address</strong><span><%= @address.street_address %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">⌖</span><strong>City Name</strong><span><%= @address.city_name %></span></div>
+      </div>
+      <div class="record-footer">
+        <span>Record ID: #ADDR-<%= @address.id || "N/A" %></span>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-heading"><span class="detail-icon">⌂</span><div><h1>Address Details</h1><p>Dashboard &nbsp;›&nbsp; Addresses &nbsp;›&nbsp; Address Details</p></div></div><%= link_to "←  Back to Addresses", addresses_path, class: "outline-button" %></div>
+    <div class="detail-card">
+      <div class="detail-row"><span class="detail-row-icon">♙</span><strong>Name</strong><span><%= @address.name %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">⌂</span><strong>Home Address</strong><span><%= @address.home_address %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">⌂</span><strong>Work Address</strong><span><%= @address.work_address %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">⌂</span><strong>Street Address</strong><span><%= @address.street_address %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">⌖</span><strong>City Name</strong><span><%= @address.city_name %></span></div>
+    </div>
+    <div class="record-footer">
+      <span>Record ID: #ADDR-<%= @address.id || "N/A" %></span>
+    </div>
+  </div>
+<% end %>

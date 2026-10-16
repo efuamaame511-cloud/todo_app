@@ -1,0 +1,37 @@
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "modal" do %>
+    <div class="form-page">
+      <div class="form-page-header"><%= link_to tasks_path, class: "back-button", aria: { label: "Back to Tasks" } do %>←<% end %><div><h1>Edit Task</h1><p>Update this task in the system</p></div></div>
+      <div class="form-card">
+        <%= render "shared/form_errors", record: @task %>
+        <%= form_with url: task_path(@task.id), method: :patch, local: true do |f| %>
+          <div class="form-field"><%= f.label :title, "Title", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= select_tag "task[title]", options_for_select(["Miss", "Mr", "Mrs", "Dr", "Prof"], @task.title), class: "form-select", prompt: "Select title", required: true %></div></div>
+          <div class="form-field"><%= label_tag "task[first_name]", "First Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">♙</span><%= text_field_tag "task[first_name]", @task.first_name, class: "form-control", placeholder: "Enter First Name", required: true %></div></div>
+          <div class="form-field"><%= label_tag "task[last_name]", "Last Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">♙</span><%= text_field_tag "task[last_name]", @task.last_name, class: "form-control", placeholder: "Enter Last Name", required: true %></div></div>
+          <div class="form-field"><%= label_tag "task[age]", "Age", class: "form-label" %><div class="input-with-icon"><span class="field-icon">▣</span><%= number_field_tag "task[age]", @task.age, class: "form-control", placeholder: "Enter age", required: true %></div></div>
+          <div class="form-field"><%= label_tag "task[contact]", "Contact", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌕</span><%= phone_field_tag "task[contact]", @task.contact, class: "form-control", placeholder: "Enter contact number", required: true %></div></div>
+          <div class="form-field"><%= label_tag "task[email]", "Email", class: "form-label" %><div class="input-with-icon"><span class="field-icon">@</span><%= email_field_tag "task[email]", @task.email, class: "form-control", placeholder: "name@example.com", required: true %></div></div>
+          <div class="form-field"><%= label_tag "task[city_name]", "City Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌖</span><%= select_tag "task[city_name]", options_for_select((@cities || []).map { |t| [t.city_name, t.city_name] }, @task.city_name), class: "form-select" %></div></div>
+          <div class="form-actions"><%= link_to "Cancel", tasks_path, class: "secondary-button" %><%= f.submit "Update Task", class: "primary-button" %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="form-page">
+    <div class="form-page-header"><%= link_to tasks_path, class: "back-button", aria: { label: "Back to Tasks" } do %>←<% end %><div><h1>Edit Task</h1><p>Update this task in the system</p></div></div>
+    <div class="form-card">
+      <%= render "shared/form_errors", record: @task %>
+      <%= form_with url: task_path(@task.id), method: :patch, local: true do |f| %>
+        <div class="form-field"><%= f.label :title, "Title", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= select_tag "task[title]", options_for_select(["Miss", "Mr", "Mrs", "Dr", "Prof"], @task.title), class: "form-select", prompt: "Select title", required: true %></div></div>
+        <div class="form-field"><%= label_tag "task[first_name]", "First Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">♙</span><%= text_field_tag "task[first_name]", @task.first_name, class: "form-control", placeholder: "Enter First Name", required: true %></div></div>
+        <div class="form-field"><%= label_tag "task[last_name]", "Last Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">♙</span><%= text_field_tag "task[last_name]", @task.last_name, class: "form-control", placeholder: "Enter Last Name", required: true %></div></div>
+        <div class="form-field"><%= label_tag "task[age]", "Age", class: "form-label" %><div class="input-with-icon"><span class="field-icon">▣</span><%= number_field_tag "task[age]", @task.age, class: "form-control", placeholder: "Enter age", required: true %></div></div>
+        <div class="form-field"><%= label_tag "task[contact]", "Contact", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌕</span><%= phone_field_tag "task[contact]", @task.contact, class: "form-control", placeholder: "Enter contact number", required: true %></div></div>
+        <div class="form-field"><%= label_tag "task[email]", "Email", class: "form-label" %><div class="input-with-icon"><span class="field-icon">@</span><%= email_field_tag "task[email]", @task.email, class: "form-control", placeholder: "name@example.com", required: true %></div></div>
+        <div class="form-field"><%= label_tag "task[city_name]", "City Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌖</span><%= select_tag "task[city_name]", options_for_select((@cities || []).map { |t| [t.city_name, t.city_name] }, @task.city_name), class: "form-select" %></div></div>
+        <div class="form-actions"><%= link_to "Cancel", tasks_path, class: "secondary-button" %><%= f.submit "Update Task", class: "primary-button" %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

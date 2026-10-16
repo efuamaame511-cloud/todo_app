@@ -1,0 +1,29 @@
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "modal" do %>
+    <div class="form-page">
+      <div class="form-page-header"><%= link_to cities_path, class: "back-button", aria: { label: "Back to Cities" } do %>←<% end %><div><h1>New City</h1><p>Add a new city to the system</p></div></div>
+      <div class="form-card">
+        <%= render "shared/form_errors", record: @city %>
+        <%= form_with url: cities_path, method: :post, local: true do |f| %>
+          <div class="form-field"><%= label_tag "city[region_code]", "Region Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌖</span><%= select_tag "city[region_code]", options_for_select((@regions || []).map { |r| [r.region, r.code] }), class: "form-select" %></div></div>
+          <div class="form-field"><%= label_tag "city[city_name]", "City Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= text_field_tag "city[city_name]", "", class: "form-control", placeholder: "Enter city name", required: true %></div></div>
+          <div class="form-field"><%= label_tag "city[city_code]", "City Code", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= text_field_tag "city[city_code]", "", class: "form-control", placeholder: "Enter city code", required: true %></div></div>
+          <div class="form-actions"><%= link_to "Cancel", cities_path, class: "secondary-button" %><%= f.submit "Save City", class: "primary-button" %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="form-page">
+    <div class="form-page-header"><%= link_to cities_path, class: "back-button", aria: { label: "Back to Cities" } do %>←<% end %><div><h1>New City</h1><p>Add a new city to the system</p></div></div>
+    <div class="form-card">
+      <%= render "shared/form_errors", record: @city %>
+      <%= form_with url: cities_path, method: :post, local: true do |f| %>
+        <div class="form-field"><%= label_tag "city[region_code]", "Region Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌖</span><%= select_tag "city[region_code]", options_for_select((@regions || []).map { |r| [r.region, r.code] }), class: "form-select" %></div></div>
+        <div class="form-field"><%= label_tag "city[city_name]", "City Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= text_field_tag "city[city_name]", "", class: "form-control", placeholder: "Enter city name", required: true %></div></div>
+        <div class="form-field"><%= label_tag "city[city_code]", "City Code", class: "form-label" %><div class="input-with-icon"><span class="field-icon">T</span><%= text_field_tag "city[city_code]", "", class: "form-control", placeholder: "Enter city code", required: true %></div></div>
+        <div class="form-actions"><%= link_to "Cancel", cities_path, class: "secondary-button" %><%= f.submit "Save City", class: "primary-button" %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

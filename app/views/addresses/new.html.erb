@@ -1,0 +1,33 @@
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "modal" do %>
+    <div class="form-page">
+      <div class="form-page-header"><%= link_to addresses_path, class: "back-button", aria: { label: "Back to Addresses" } do %>←<% end %><div><h1>New Address</h1><p>Add a new address to the system</p></div></div>
+      <div class="form-card">
+        <%= render "shared/form_errors", record: @address %>
+        <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
+          <div class="form-field"><%= f.label :name, "Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">♙</span><%= collection_select(:address, :name, @tasks, :full_name, :full_name, { prompt: true }, { class: "form-select" }) %></div></div>
+          <div class="form-field"><%= f.label :home_address, "Home Address", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌂</span><%= f.text_field :home_address, class: "form-control", placeholder: "Enter home address", required: true %></div></div>
+          <div class="form-field"><%= f.label :work_address, "Work Address", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌂</span><%= f.text_field :work_address, class: "form-control", placeholder: "Enter work address", required: true %></div></div>
+          <div class="form-field"><%= f.label :street_address, "Street Address", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌂</span><%= f.text_field :street_address, class: "form-control", placeholder: "Enter street address", required: true %></div></div>
+          <div class="form-field"><%= f.label :city_name, "City Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌖</span><%= select_tag "address[city_name]", options_for_select((@cities || []).map { |a| [a.city_name, a.city_name] }), class: "form-select" %></div></div>
+          <div class="form-actions"><%= link_to "Cancel", addresses_path, class: "secondary-button" %><%= f.submit "Save Address", class: "primary-button" %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="form-page">
+    <div class="form-page-header"><%= link_to addresses_path, class: "back-button", aria: { label: "Back to Addresses" } do %>←<% end %><div><h1>New Address</h1><p>Add a new address to the system</p></div></div>
+    <div class="form-card">
+      <%= render "shared/form_errors", record: @address %>
+      <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
+        <div class="form-field"><%= f.label :name, "Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">♙</span><%= collection_select(:address, :name, @tasks, :full_name, :full_name, { prompt: true }, { class: "form-select" }) %></div></div>
+        <div class="form-field"><%= f.label :home_address, "Home Address", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌂</span><%= f.text_field :home_address, class: "form-control", placeholder: "Enter home address", required: true %></div></div>
+        <div class="form-field"><%= f.label :work_address, "Work Address", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌂</span><%= f.text_field :work_address, class: "form-control", placeholder: "Enter work address", required: true %></div></div>
+        <div class="form-field"><%= f.label :street_address, "Street Address", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌂</span><%= f.text_field :street_address, class: "form-control", placeholder: "Enter street address", required: true %></div></div>
+        <div class="form-field"><%= f.label :city_name, "City Name", class: "form-label" %><div class="input-with-icon"><span class="field-icon">⌖</span><%= select_tag "address[city_name]", options_for_select((@cities || []).map { |a| [a.city_name, a.city_name] }), class: "form-select" %></div></div>
+        <div class="form-actions"><%= link_to "Cancel", addresses_path, class: "secondary-button" %><%= f.submit "Save Address", class: "primary-button" %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

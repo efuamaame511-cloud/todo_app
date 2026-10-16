@@ -1,0 +1,44 @@
+<div class="index-page">
+  <div class="index-header recycle-bin-header">
+    <div class="index-title-block">
+      <h1>Recycle Bin</h1>
+      <p>Deleted data is kept for 10 minutes before it is removed permanently.</p>
+    </div>
+    <div class="recycle-bin-count"><%= @entries.count %> <span>items</span></div>
+  </div>
+
+  <div class="data-shell">
+    <% if @entries.empty? %>
+      <div class="recycle-bin-empty">
+        <h2>Your recycle bin is empty</h2>
+        <p>Deleted records will appear here for 10 minutes.</p>
+        <%= link_to "Back to dashboard", tasks_path, class: "primary-btn" %>
+      </div>
+    <% else %>
+      <table class="data-table recycle-bin-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Record</th>
+            <th>Deleted</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @entries.each do |entry| %>
+            <% attributes = entry["attributes"] %>
+            <% record_name = attributes["name"] || attributes["title"] || attributes["city_name"] || attributes["region"] || "Record ##{entry["record_id"]}" %>
+            <tr>
+              <td data-label="Type"><span class="code-pill"><%= entry["type"] %></span></td>
+              <td data-label="Record"><%= record_name %></td>
+              <td data-label="Deleted"><%= time_ago_in_words(Time.iso8601(entry["deleted_at"])) %> ago</td>
+              <td data-label="Actions" class="action-cell">
+                <%= button_to "Restore", restore_recycle_bin_path(entry["id"]), method: :post, class: "table-action-btn recycle-restore-btn" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "modal" do %>
+    <div class="detail-page">
+      <div class="detail-header"><div class="detail-heading"><span class="detail-icon">▤</span><div><h1>Region Details</h1><p>Dashboard &nbsp;›&nbsp; Regions &nbsp;›&nbsp; Region Details</p></div></div><%= link_to "←  Back to Regions", regions_path, class: "outline-button" %></div>
+      <div class="detail-card">
+        <div class="detail-row"><span class="detail-row-icon">▤</span><strong>ID</strong><span><%= @region.id %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">T</span><strong>Code</strong><span><%= @region.code %></span></div>
+        <div class="detail-row"><span class="detail-row-icon">T</span><strong>Region</strong><span><%= @region.region %></span></div>
+      </div>
+      <div class="record-footer">
+        <span>Record ID: #REG-<%= @region.id || "N/A" %></span>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="detail-page">
+    <div class="detail-header"><div class="detail-heading"><span class="detail-icon">▤</span><div><h1>Region Details</h1><p>Dashboard &nbsp;›&nbsp; Regions &nbsp;›&nbsp; Region Details</p></div></div><%= link_to "←  Back to Regions", regions_path, class: "outline-button" %></div>
+    <div class="detail-card">
+      <div class="detail-row"><span class="detail-row-icon">▤</span><strong>ID</strong><span><%= @region.id %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">T</span><strong>Code</strong><span><%= @region.code %></span></div>
+      <div class="detail-row"><span class="detail-row-icon">T</span><strong>Region</strong><span><%= @region.region %></span></div>
+    </div>
+    <div class="record-footer">
+      <span>Record ID: #REG-<%= @region.id || "N/A" %></span>
+    </div>
+  </div>
+<% end %>
